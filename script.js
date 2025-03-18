@@ -1,3 +1,4 @@
+// Keep your existing imports at the top
 import { db } from "./firebase.js";
 import {
   doc,
@@ -12,6 +13,7 @@ const sheetUrls = {
 
 let currentVoucherData = null;
 
+// Define your functions
 async function fetchData(sheetKey, inputId) {
   const voucherCode = document.getElementById(inputId).value.trim();
   if (!voucherCode) {
@@ -233,6 +235,17 @@ async function claimReward() {
   }
 }
 
-// Expose the functions globally
+// THIS IS THE KEY CHANGE: Expose the functions to the window object
+// This makes them available globally so HTML onclick can access them
 window.fetchData = fetchData;
 window.claimReward = claimReward;
+
+// Initialize event listeners after DOM has loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // You can also add event listeners this way instead of using onclick in HTML
+  const fetchButton = document.getElementById('fetchButton');
+  fetchButton.addEventListener('click', () => {
+    fetchData('sheet1', 'voucher1');
+    console.log('Fetch button clicked');
+  });
+});

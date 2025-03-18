@@ -9,7 +9,7 @@ body {
 
 /* Header */
 h1 {
-    background: #5a2075;
+    background-color: #5a2075;
     color: white;
     padding: 20px;
     margin: 0;
@@ -73,7 +73,7 @@ h1 {
 }
 
 #data-display h2 {
-    color:#5a2075;
+    color: #5a2075;
     font-size: 1.5rem;
     text-align: center;
 }
